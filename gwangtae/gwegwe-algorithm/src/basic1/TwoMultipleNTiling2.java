@@ -1,6 +1,8 @@
+package basic1;
+
 import java.util.Scanner;
 
-public class TwoMultipleNTiling {
+public class TwoMultipleNTiling2 {
 
   static int[] d;
 
@@ -10,8 +12,7 @@ public class TwoMultipleNTiling {
     d = new int[n+1];
     d[0] = 1;
     d[1] = 1;
-    int result = calculate(n);
-    System.out.println(result);
+    System.out.println(calculate(n));
     sc.close();
   }
 
@@ -20,7 +21,7 @@ public class TwoMultipleNTiling {
       return d[n];
     }
 
-    d[n] = (calculate(n-1) + calculate(n-2)) % 10007;
+    d[n] = (calculate(n-1) + calculate(n-2) + calculate(n-2)) % 10007;
     return d[n];
   }
 }

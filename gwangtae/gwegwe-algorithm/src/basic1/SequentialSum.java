@@ -1,6 +1,8 @@
+package basic1;
+
 import java.util.Scanner;
 
-public class LIS {
+public class SequentialSum {
 
   static int[] a;
   static int[] d;
@@ -16,16 +18,16 @@ public class LIS {
       a[i] = sc.nextInt();
     }
 
-    int result = 0;
-    for (int i = 0; i < n; i++) {
-      d[i] = 1;
-      for (int j = 0; j < i; j++) {
-        if (a[j] < a[i] && d[i] < d[j] + 1) {
-          d[i] = d[j] + 1;
-        }
+    d[0] = a[0];
+    for (int i = 0; i < n - 1; i++) {
+      if (a[i+1] > d[i] + a[i+1]) {
+        d[i+1] = a[i+1];
+      } else {
+        d[i+1] = a[i+1] + d[i];
       }
     }
 
+    int result = 0;
     for (int i = 0; i < n; i++) {
       if (d[i] > result) {
         result = d[i];
